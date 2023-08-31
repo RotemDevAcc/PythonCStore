@@ -23,18 +23,25 @@ def run_actions():
         print_actions(Actions)
         selection = input("Choose Item To Buy: ")
     
-
-        selection = Actions(int(selection))
-        if(selection == Actions.ADD):
-            AddItem()
-        elif(selection == Actions.REMOVE):
-            remove_basket()
-        elif(selection == Actions.LISTBASKET):
-            print_basket()
-        elif(selection == Actions.ITEMSFORSALE):
-            print_items()
-        elif(selection == Actions.CHECKOUT):
-            checkout()
+        try:
+            if(not selection.isdigit()):
+                raise ValueError("Chosen Item Is Not A Number")
+            
+            selection = Actions(int(selection))
+            if(selection == Actions.ADD):
+                AddItem()
+            elif(selection == Actions.REMOVE):
+                remove_basket()
+            elif(selection == Actions.LISTBASKET):
+                print_basket()
+            elif(selection == Actions.ITEMSFORSALE):
+                print_items()
+            elif(selection == Actions.CHECKOUT):
+                checkout()
+        except ValueError as e:
+            log_action(f"An error occurred: {str(e)}","debug")
+        except Exception as e:
+            log_action(f"An error occurred: {str(e)}","debug")
 
 
 if __name__ == "__main__":

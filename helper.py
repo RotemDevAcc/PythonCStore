@@ -1,5 +1,35 @@
 from app import Items
 import os
+import logging
+logging.basicConfig(
+    level=logging.DEBUG,          # Set the minimum log level to display
+    format='%(asctime)s [%(levelname)s]: %(message)s',
+    filename='my_app.log',        # Log messages to a file (optional)
+)
+
+
+def log_action(message,case):
+    if(case is None or case == ""):
+        case = "DEBUG"
+    
+    if(message == "" or message is None):
+        logging.debug("log_action received an empty message")
+        return
+
+    case = case.upper()
+
+    if(case == "DEBUG"):
+        logging.debug(message, exc_info=True)
+    elif(case == "INFO"):
+        logging.info(message, exc_info=True)
+    elif(case == "WARNING"):
+        logging.warning(message, exc_info=True)
+    elif(case == "ERROR"):
+        logging.error(message, exc_info=True)
+    elif(case == "CRITICAL"):
+        logging.critical(message, exc_info=True)
+    else:
+        logging.debug("log_action was not used properly case non-existent")
 
 def ClearConsole():
     os.system("cls" if os.name == "nt" else "clear")
@@ -42,6 +72,9 @@ def AddItem():
 
     print_items()
     selection = int(input("Select Item: "))
+    if(not selection.isdigit()):
+        log_action(f"Add Item {selection} was not received as a number","debug")
+
     found = None
     for i,value in enumerate(Items):
         if i + 1 == selection:
@@ -91,8 +124,9 @@ def remove_basket():
                 print(f"Removed {removed_item['amount']} {removed_item['label']} from the basket.")
             else:
                 print("Invalid selection. Please choose a valid item number.")
-        except ValueError:
+        except Exception as e:
             print("Invalid input. Please enter a valid number.")
+            log_action(f"An error occurred: {str(e)}","debug")
     
 def print_basket():
     print("-" * 43)

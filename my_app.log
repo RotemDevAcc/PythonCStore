@@ -1,0 +1,26 @@
+2023-08-31 14:16:46,819 [DEBUG]: An error occurred: Chosen Item Is Not A Number
+Traceback (most recent call last):
+  File "F:\Projects\PythonCStore\app.py", line 28, in run_actions
+    raise ValueError("Chosen Item Is Not A Number")
+ValueError: Chosen Item Is Not A Number
+2023-08-31 14:17:32,456 [DEBUG]: An error occurred: Chosen Item Is Not A Number
+Traceback (most recent call last):
+  File "F:\Projects\PythonCStore\app.py", line 28, in run_actions
+    raise ValueError("Chosen Item Is Not A Number")
+ValueError: Chosen Item Is Not A Number
+2023-08-31 14:17:51,989 [DEBUG]: An error occurred: invalid literal for int() with base 10: 'asdfasldfa'
+Traceback (most recent call last):
+  File "F:\Projects\PythonCStore\app.py", line 32, in run_actions
+    AddItem()
+  File "F:\Projects\PythonCStore\helper.py", line 74, in AddItem
+    selection = int(input("Select Item: "))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'asdfasldfa'
+2023-08-31 14:18:12,066 [DEBUG]: An error occurred: invalid literal for int() with base 10: 'fasd'
+Traceback (most recent call last):
+  File "F:\Projects\PythonCStore\app.py", line 32, in run_actions
+    AddItem()
+  File "F:\Projects\PythonCStore\helper.py", line 74, in AddItem
+    selection = int(input("Select Item: "))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'fasd'
